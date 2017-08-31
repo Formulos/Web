@@ -12,7 +12,7 @@ public class DAO {
 	public DAO() {
 		try {
 	 Class.forName("com.mysql.jdbc.Driver");
-	 connection = DriverManager.getConnection("jdbc:mysql://localhost/meus_dados", "root", "1234");
+	 connection = DriverManager.getConnection("jdbc:mysql://localhost/projeto_1", "root", "1234");
 		}
 		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -31,7 +31,7 @@ public class DAO {
 		PreparedStatement stmt;
 		try {
 			stmt = connection.
-					prepareStatement("SELECT * FROM nota");
+					prepareStatement("SELECT * FROM notas");
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
@@ -54,8 +54,8 @@ public class DAO {
 		}
 	
 	public void adiciona(notas nota) {
-		String sql = "INSERT INTO nota" +
-		"(nome,nascimento,altura) values(?,?,?)";
+		String sql = "INSERT INTO notas" +
+		"(Titulo,Texto) values(?,?)";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
@@ -80,14 +80,14 @@ public class DAO {
 		}
 	
 	public void altera(notas nota) {
-		String sql = "UPDATE nota SET " +
-		 "nome=?, nascimento=?, altura=? WHERE id=?";
+		String sql = "UPDATE notas SET " +
+		 "Titulo=?, Texto=? WHERE id=?";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, nota.getTitulo());
 			stmt.setString(2, nota.getTexto());
-			stmt.setInt(4, nota.getId());
+			stmt.setInt(3, nota.getId());
 			stmt.execute();
 			stmt.close();
 			
@@ -101,7 +101,7 @@ public class DAO {
 		PreparedStatement stmt;
 		try {
 			stmt = connection
-			 .prepareStatement("DELETE FROM nota WHERE id=?");
+			 .prepareStatement("DELETE FROM notas WHERE id=?");
 			stmt.setLong(1, id);
 			stmt.execute();
 			stmt.close();

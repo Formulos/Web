@@ -31,8 +31,8 @@ public class Lista extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.println("<html><body><table border='1'>");
-		out.println("<tr><td>ID</td><td>Nome</td>" +
-				"<td>Nascimento</td><td>Altura</td></tr>");
+		out.println("<tr><td>ID</td><td>Titulo</td>" +
+				"<td>Texto</td></tr>");
 		
 		for (notas nota : notas) {
 		 out.println("<tr><td>" + nota.getId() + "</td>");
