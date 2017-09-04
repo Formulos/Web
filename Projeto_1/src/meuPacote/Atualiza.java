@@ -25,7 +25,6 @@ public class Atualiza extends HttpServlet {
 	 PrintWriter out = response.getWriter();
 	 out.println("<html><body>");
 	 out.println("<form method='post'>");
-	 out.println("ID: <input type='number' name='id'><br>");
 	 out.println("Titulo: <input type='text' name='Titulo'><br>");
 	 out.println("Texto: <input type='text' name='Texto'><br>");
 	 out.println("<input type='submit' value='Submit'>");

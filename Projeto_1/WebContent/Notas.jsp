@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Justified Nav Template for Bootstrap</title>
+    <title>Not google keep</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,18 +24,19 @@
 	
 	<div class="container">
 	
-		<div class="masthead">
-			<h3 class="text-muted">Project name</h3>
-		</div>
 		
 		   
 		
 		<!-- Jumbotron -->
 		<div class="jumbotron">
-			<h1>Marketing stuff!</h1>
-			<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-			<p><a class="btn btn-lg btn-success" href="#" role="button">Cria</a></p>
+			<h1>Cria uma nova nota</h1>
+			<form action="Cria" method="Post">
+				Titulo :<input type='text' name='Titulo'><br>
+				Texto :<input type='text' name='Texto'><br>
+				<input class="btn btn-lg btn-success" type="submit" name="Cria" value="Cria" />
+			</form>
 		</div>
+
 		
 		<!-- Example row of columns -->
 		<%@ page import="java.util.*,meuPacote.*" %>
@@ -50,9 +51,14 @@
 				<p><%=nota.getTexto()%></p>
 				<div class="columns">
 				<form action="Remove" method="post">
-				    <input type="submit" name="Delete" value="Delete" />
+					<input type="hidden" name='id' value=<%=nota.getId()%>>
+				    <input class="btn btn-primary" type="submit" value="Delete" />
 				</form>
-					<p><a class="btn btn-primary" href="#" role="button"></a></p>
+				<p></p>
+				<form action="Atualiza" method="get">
+					<input type="hidden" name='id' value=<%=nota.getId()%>>
+				    <input class="btn btn-primary" type="submit" value="Editar" />
+				</form>
 				</div>
 				<% } %>
 			</div>
